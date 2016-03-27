@@ -1,0 +1,44 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html">
+
+<ui:composition template="/WEB-INF/templates/BasicTemplate.xhtml">
+
+	<ui:define name="content">
+<h:form>
+<div class="row">
+<div class="col-md-12">
+	    <h3><h:outputText value="#{familyTree.currentNode.name}"/></h3>
+	    <h:outputText value="b. #{familyTree.currentNode.birthYear}"/>
+	    <br />d.&nbsp;<h:outputText value="#{familyTree.currentNode.deathYear}" rendered="#{familyTree.currentNode.deathYear>0}"/>
+		<br /><h:outputText value="Age #{familyTree.currentNode.age}"/>
+</div>
+</div>
+<br />
+<h:messages style="color:red;margin:8px;" />
+<div class="row">
+<div class="col-md-4">
+		<h4>Add Child</h4>
+		<label>Name</label>
+		<h:inputText id="name" value="#{familyTree.name}" styleClass="form-control">
+		</h:inputText>
+		<h:message for="name" style="color:red" />
+		<label>Birth Year</label>
+		<h:inputText value="#{familyTree.birthYear}" styleClass="form-control"></h:inputText>
+		<label>Death Year</label>
+		<h:inputText value="#{familyTree.deathYear}" styleClass="form-control"></h:inputText>
+		<h:commandButton value="Submit" action="#{familyTree.addChild}" styleClass="btn btn-primary"></h:commandButton>
+</div>
+</div>
+
+
+</h:form>
+	</ui:define>
+
+</ui:composition>
+
+</html>
